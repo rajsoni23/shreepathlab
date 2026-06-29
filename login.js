@@ -7,7 +7,7 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
   try {
     const firestoreUrl = "https://firestore.googleapis.com/v1/projects/deoa-8a388/databases/(default)/documents/users/" + encodeURIComponent(emailVal);
     const response = await fetch(firestoreUrl, {
-      headers: { "X-Goog-Api-Key": "AIzaSyBacs3egVLVP6d2WIfbMAh2pXaAbeB4V2I" }
+      headers: { "X-Goog-Api-Key": "" }
     });
     const data = await response.json();
 
@@ -17,7 +17,7 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          "X-Goog-Api-Key": "AIzaSyBacs3egVLVP6d2WIfbMAh2pXaAbeB4V2I"
+          "X-Goog-Api-Key": ""
         },
         body: JSON.stringify({
           fields: {
