@@ -13,7 +13,7 @@
   try {
     const docUrl = "https://firestore.googleapis.com/v1/projects/deoa-8a388/databases/(default)/documents/users/" + encodeURIComponent(cachedEmail);
     const serverRequest = await fetch(docUrl, {
-      headers: { "X-Goog-Api-Key": "AIzaSyBacs3egVLVP6d2WIfbMAh2pXaAbeB4V2I" }
+      headers: { "X-Goog-Api-Key": "" }
     });
     const payload = await serverRequest.json();
 
@@ -183,7 +183,7 @@ function InitializeOnboardingSubmissionLogic(targetDocumentEndpoint) {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          "X-Goog-Api-Key": "AIzaSyBacs3egVLVP6d2WIfbMAh2pXaAbeB4V2I"
+          "X-Goog-Api-Key": ""
         },
         body: JSON.stringify(patchPayload)
       });
