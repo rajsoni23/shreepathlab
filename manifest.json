@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "PathoLab Pro",
+  "version": "1.0.0",
+  "description": "Commercial-Grade Offline-First Pathology Laboratory Management System",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "options_page": "dashboard.html"
+}

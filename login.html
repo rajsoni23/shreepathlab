@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHREE Pathology Report</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:Segoe UI,Arial,sans-serif; }
+body { height:100vh; display:flex; justify-content:center; align-items:center; background:linear-gradient(135deg,#1d3557,#457b9d,#a8dadc); overflow: hidden; }
+.container { width:1100px; max-width:95%; display:flex; background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.25); }
+.left { flex:1; padding:50px; background:linear-gradient(135deg,#0f4c81,#2563eb); color:white; display:flex; flex-direction:column; justify-content:center; }
+.left h1 { font-size:32px; font-weight:800; margin-bottom:10px; text-transform:uppercase; letter-spacing:1px; }
+.left h3 { font-size:18px; font-weight:400; margin-bottom:30px; opacity:0.9; }
+.feature { margin-bottom:15px; font-size:15px; display:flex; align-items:center; gap:10px; opacity:0.85; }
+.feature::before { content:"✓"; color:#a8dadc; font-weight:bold; font-size:18px; }
+.right { width:450px; padding:50px; display:flex; align-items:center; background:#fff; }
+.login-box { width:100%; }
+.logo { font-size:22px; font-weight:800; color:#1d3557; margin-bottom:5px; }
+.sub { font-size:13px; color:#666; margin-bottom:25px; }
+input[type="email"] { width:100%; padding:14px; border:2px solid #e1e8ed; border-radius:10px; font-size:15px; margin-bottom:15px; transition:all 0.3s ease; outline:none; }
+input[type="email"]:focus { border-color:#2563eb; box-shadow:0 0 0 4px rgba(37,99,235,0.15); }
+button#loginBtn { width:100%; padding:14px; background:#2563eb; color:white; border:none; border-radius:10px; font-size:16px; font-weight:600; cursor:pointer; transition:background 0.2s ease; box-shadow:0 4px 12px rgba(37,99,235,0.2); }
+button#loginBtn:hover { background:#1d4ed8; }
+hr { border:none; border-top:1px solid #e1e8ed; margin:25px 0; }
+.qr-title { font-size:14px; font-weight:700; color:#1d3557; text-align:center; margin-bottom:10px; }
+@media(max-width:900px){ .container{ flex-direction:column; } .right{ width:100%; padding:35px; } .left{ padding:35px; } body { overflow-y: auto; height: auto; padding: 20px 0; } }
+
+/* CSS FOR THE ONBOARDING OVERLAY FORM GATE */
+.ob-overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(15, 76, 129, 0.96); z-index:99999; overflow-y:auto; padding: 40px 20px; }
+.ob-card { background: white; max-width: 650px; margin: 0 auto; border-radius: 16px; padding: 35px; box-shadow: 0 15px 50px rgba(0,0,0,0.4); }
+.ob-card h2 { color: #0f4c81; margin-top: 0; margin-bottom: 5px; font-size: 24px; font-weight: 800; }
+.ob-card p { color: #555; font-size: 13px; margin-bottom: 25px; line-height: 1.5; }
+.ob-group { margin-bottom: 15px; }
+.ob-group label { display:block; font-weight:600; margin-bottom:6px; color:#2c3e50; font-size: 13px; }
+.ob-input { width:100%; padding:11px; border:1px solid #cbd5e1; border-radius:8px; font-size:14px; outline: none; transition: border 0.2s; }
+.ob-input:focus { border-color: #2563eb; }
+.ob-grid { display:grid; grid-template-columns: 1fr 1fr; gap:15px; }
+.ob-btn { background: #2563eb; color: white; border: none; padding: 14px; font-weight: bold; border-radius: 8px; cursor: pointer; width: 100%; font-size:15px; margin-top: 15px; box-shadow: 0 4px 12px rgba(37,99,235,0.25); transition: background 0.2s; }
+.ob-btn:hover { background: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="left">
+    <h1>SHREE PATHOLOGY REPORT</h1>
+    <h3>Premium REPORT Extension</h3>
+    <div class="feature">Secure Google Authentication</div>
+    <div class="feature">Fast Reports Generation</div>
+    <div class="feature">Premium Automation Features</div>
+    <div class="feature">Regular Updates & Support</div>
+    <div class="feature">Account Activation within Minutes</div>
+  </div>
+  <div class="right">
+    <div class="login-box">
+      <div class="logo">SHREE PATHOLOGY REPORT</div>
+      <div class="sub">Sign in using your authorized Google account</div>
+      <input type="email" id="email" placeholder="Enter your registered Gmail" required>
+      <button id="loginBtn">Verify & Continue</button>
+      <hr>
+      <div class="qr-title">Purchase Premium Access</div>
+    </div>
+  </div>
+</div>
+
+<div id="onboarding-overlay-container" class="ob-overlay">
+  <div class="ob-card">
+    <h2>🏥 Laboratory Profile Setup</h2>
+    <p>Aapki pathology ke ye vivran (details) aapki final patient reports ke top header (letterhead) aur signature space me dynamically automatic print honge. Kripya ise sahi se fill karein.</p>
+    
+    <form id="onboardingLabForm">
+      <div class="ob-group">
+        <label>Laboratory Title Name (e.g., ELITE DIAGNOSTICS)</label>
+        <input type="text" id="ob-labName" class="ob-input" required placeholder="Enter Laboratory Name">
+      </div>
+
+      <div class="ob-group">
+        <label>Tagline / Subtitle Subheader (e.g., and Research Centre)</label>
+        <input type="text" id="ob-labSubtitle" class="ob-input" placeholder="e.g., And Research Centre">
+      </div>
+
+      <div class="ob-group ob-grid">
+        <div>
+          <label>Establishment Registration ID</label>
+          <input type="text" id="ob-regNo" class="ob-input" required placeholder="e.g., RMEE2553538">
+        </div>
+        <div>
+          <label>Official Contact Number</label>
+          <input type="text" id="ob-contact" class="ob-input" required placeholder="e.g., +91 9555573334">
+        </div>
+      </div>
+
+      <div class="ob-group">
+        <label>Branch Center Address</label>
+        <input type="text" id="ob-branchAddress" class="ob-input" required placeholder="Full Branch Location Address">
+      </div>
+
+      <div class="ob-group">
+        <label>Head Office Address (Optional)</label>
+        <input type="text" id="ob-headOffice" class="ob-input" placeholder="Head Office address description if any">
+      </div>
+
+      <h3 style="color: #2563eb; font-size:15px; border-top:1px dashed #e2e8f0; padding-top:15px; margin-top:20px; margin-bottom:12px; font-weight: 700;">✍️ Authorized Pathologist Signatory Details</h3>
+
+      <div class="ob-group">
+        <label>Doctor Name (e.g., Dr Sanjay Kumar Gupta)</label>
+        <input type="text" id="ob-doctorName" class="ob-input" required placeholder="Full Name of Doctor">
+      </div>
+
+      <div class="ob-group ob-grid">
+        <div>
+          <label>Medical Degree (e.g., MD (PATHOLOGY))</label>
+          <input type="text" id="ob-doctorDegree" class="ob-input" required placeholder="e.g., MD (PATHOLOGY)">
+        </div>
+        <div>
+          <label>Doctor Registration/MCI No.</label>
+          <input type="text" id="ob-doctorRegNo" class="ob-input" required placeholder="e.g., MCI Registration No. 10693">
+        </div>
+      </div>
+
+      <button type="submit" class="ob-btn">💾 Save Settings & Initialize Workspace</button>
+    </form>
+  </div>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>
